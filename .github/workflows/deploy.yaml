@@ -1,0 +1,21 @@
+name: Deploy to My Cluster
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v3
+
+    - name: Build Docker image
+      run: |
+        docker build -t tablula:latest .
+
+    - name: Apply to Kubernetes
+      run: |
+        kubectl apply -f k8s/deployment.yaml

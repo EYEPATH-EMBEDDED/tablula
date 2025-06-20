@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/userList
+
+logging:
+  level:
+    org.springframework: INFO
+
+jwt:
+  secert: ${JWT_SECRET_KEY}
